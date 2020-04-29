@@ -1,0 +1,12 @@
+# Geocoding: de la representación humana al sistema de coordenadas
+
+En capítulos anteriores ya descubrimos la particularidad de la representación de los datos espaciales: los ubicamos en base a un modelo de la tierra en lo qu se conoce como Coordinate Reference System (CRS). Esta forma de representación es muy distinta a la que tenemos en nuestras cabezas cuando nos dicen que tenemos que ir a cursar a Figueroa Alcorta 7350. En diversas circunstancias vamos a necesitar convertir esta direcciones a puntos espaciales para poder agregar información relevante para nuestros análisis y encontrar nuevos patrones en nuestros datos.
+Veamos cómo podemos hacerlo usando servicios del Estado de Argentina y también de Google.
+
+## ¿Qué es la geocodificación o geocoding?
+
+Geocoding no es otra cosa que la transformación de una ubicación en el formato que manejamos a diario hacia una coordenada en un sistema de coordenadas de referencia (CRS, en inglés). Esta simple operación es sumamente útil para muchos de nuestros objetivos. Imaginemos que queremos tener alguna medida de la cobertura de atención para la salud en la Ciudad de Buenos Aires. Tenemos la dirección de distintos hospitales y centros de salud, pero no conocemos cómo se distribuyen en el espacio. Carguemos primero estos datos
+
+```{r}
+
+```
