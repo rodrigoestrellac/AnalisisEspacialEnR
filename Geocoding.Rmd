@@ -271,6 +271,29 @@ ggplot(distancias) +
 
 La diferencia es baja en casi todos los casos, menos uno que está en aproximadamente 900 metros. Si aceptamos una tolerancia de 200 metros de diferencia, la coincidencia es casi total, nada mal. Google tiene una ventaja, igual: devolvió todos menos dos puntos.
 
+## Una tercera alternativa: geocode_OSM()
+
+En general, la tarea de geocodificación requiere cierta prueba y error. No todos los servicios de geocodificación saben interpretar de la misma manera a las direcciones, y muchas veces las asignan a distintas coordenadas (este problema puede ser especialmente importante al trabajar con Google Maps, que siempre intenta devolver algún resultado). **Open Street Map (OSM)** nos brinda otra alternativa para poder hacer geocoding, y esta vez de manera gratuita y sin restricciones geográficas (es decir, funciona para distintos países).
+
+Para usar este servicio, deben tener instalado **tmaptools** y su uso es realmente simple. Solo debemos generar una variable que tenga la dirección que vamos a consultar y luego usar **geocode_OSM()**
+
+```{r message=FALSE, warning=FALSE}
+library(tmaptools)
+salud <- salud %>%
+         mutate(consultaOSM=paste(Dirección,", Ciudad de Buenos Aires, Argentina",sep=""))
+saludOSM <- geocode_OSM(salud %>% pull(consultaOSM),projection = 4326,return.first.only = TRUE,as.sf = TRUE)
+```
+
+A diferencia de lo que hicimos con **wrapar**, en este caso ya nos devolvió un objeto sf, podemos usar leaflet para hacer un control de que, al menos, nuestros puntos están en la Ciudad de Buenos Aires
+
+```{r}
+leaflet(saludOSM) %>% 
+  addTiles() %>%
+  addMarkers()
+```
+
+Puede fallar... algunos están afuera de la Ciudad de Buenos Aires ¿Tienen idea de como detectarlos ? Les doy una pista: pueden bajarse un mapa de argentina por provincia (por ejemplo de acá)[https://www.indec.gob.ar/indec/web/Institucional-Indec-Codgeo] y hacer un **st_join()** y luego filtrar solo a los que están en CABA.
+
 ## Ejercicios
 
 Busquen un conjunto de direcciones que les interese y calculen las distancias entre ellas usando la aplicación de geolocalización de Argentina y la función de distancia del paquete sf.
