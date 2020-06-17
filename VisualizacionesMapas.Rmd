@@ -1,22 +1,5 @@
----
-title: "Visualizaciones de datos espaciales"
-date: "Primer trimestre 2019"
-author: "Martín Montané"
-output: 
-  pdf_document:
-    includes:
-      in_header: header.tex
-urlcolor: blue
----
-
-
 # Mapas 
 
-```
-Al terminar este capítulo ustedes van a poder:
-- Diseñar y exportar mapas en R usando las librerías ggplot y tmap
-- 
-```
 
 ```{r message=FALSE}
 require(tidyverse) # Para manipulación de nuestros datos
@@ -33,9 +16,6 @@ require(ggthemes) # Sirve para dejar más lindos nuestros gráficos de ggplot
 require(RColorBrewer) # Ídem
 # install.packages("leaflet")
 require(leaflet) # Sirve para hacer mapas intereactivos
-# install.packages("tmap")
-require(tmap)
-require(rgdal)
 ```
 
 # Trabajando con el censo 2010
