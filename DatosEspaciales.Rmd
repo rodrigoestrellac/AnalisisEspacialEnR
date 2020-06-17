@@ -146,7 +146,7 @@ radiosCensales <- read_sf("data/caba_radios_censales.geojson")
 ```
 
 ```{r message=FALSE, warning=FALSE, eval=FALSE}
-calles <- read_sf("caba_radios_censales.geojson")
+radiosCensales <- read_sf("caba_radios_censales.geojson")
 ```
 
 En este caso no necesitamos saber cuál el es el sistema de coordenada de referencias... siempre será el WSG84. Veamos qué variables trae
